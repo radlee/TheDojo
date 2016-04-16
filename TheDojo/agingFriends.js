@@ -13,7 +13,7 @@ for(var i =0; i< string1.length; i ++){
 	var friend = string1[i].split(' is')
 	friends2.push(friend);
 }
-console.log(friends2);
+// console.log(friends2);
 
 //Create a list of Friends Object -----
 var friendsList =[];
@@ -24,21 +24,40 @@ friends2.map(function(friend){
 	}
 	friendsList.push(frnd);
 })
-console.log(friendsList)
+// console.log(friendsList)
 
 //Which of my Friends is the Oldest ----
 var olderFriend = function(friendsObjects){
 	var older = -Infinity;
 	var name ='';
-
 	friendsObjects.forEach(function(friend){
 		if(friend.Age > older){
 			older = friend.Age;
 			name = friend.Name;
 		}
 	})
+	console.log("\n--------------------------------------------")
 	console.log("The Older friend is " + name + " who's " + older + " years.");
+	console.log("--------------------------------------------")
 	return older;
 }
-
 olderFriend(friendsList);
+
+var younger =[];
+var checkTheyoungest = function(listObs, name){
+	console.log("|-" + name.Name + " is " + name.Age + " years old -|")
+	console.log("--------------------------------------------")
+	listObs.forEach(function(friend){
+		if(friend.Age < name.Age){
+			younger.push(friend)
+		}
+	})
+	younger.forEach(function(friend){
+		console.log("\n--------------------------------------------")
+		console.log("Younger than " + name.Name + " : >> " + friend.Name + " = " + friend.Age)
+		console.log("--------------------------------------------")
+	})
+}
+//Parse in the list of friends Objects and the Object you wanna compare with
+checkTheyoungest(friendsList, { Name: ' Ellie', Age: ' 20' })
+// console.log(younger);
