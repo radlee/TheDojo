@@ -4,27 +4,30 @@ function splitString(stringToSplit, separator){
 	var arrayOfStrings = stringToSplit.split(separator);
 	return arrayOfStrings;
 }
+var listOfSplittedStrings = splitString(friends, ',');
+console.log(listOfSplittedStrings)
 
-var string1 = splitString(friends, ',');
-
-//Next Remove 'is' in  friend and make each a list in one LIST
-var friends2 = [];
-for(var i =0; i< string1.length; i ++){
-	var friend = string1[i].split(' is')
-	friends2.push(friend);
+var listOfFriends = function(splittedString, separator){
+	var listsOfNamesAndAges = [];
+	for(var i =0; i< splittedString.length; i ++){
+		var friend = splittedString[i].split(separator)
+		listsOfNamesAndAges.push(friend);
+	}
+	return listsOfNamesAndAges;
 }
-// console.log(friends2);
+var listsOfNamesAndAges = listOfFriends(listOfSplittedStrings, ' is');
+console.log(listsOfNamesAndAges)
 
 //Create a list of Friends Object -----
 var friendsList =[];
-friends2.map(function(friend){
+listsOfNamesAndAges.map(function(friend){
 	var frnd = {
 		Name : friend[0],
 		Age : friend[1]
 	}
 	friendsList.push(frnd);
 })
-// console.log(friendsList)
+console.log(friendsList)
 
 //Which of my Friends is the Oldest ----
 var olderFriend = function(friendsObjects){
@@ -38,7 +41,7 @@ var olderFriend = function(friendsObjects){
 	})
 	console.log("\n--------------------------------------------")
 	console.log("The Older friend is " + name + " who's " + older + " years.");
-	console.log("--------------------------------------------")
+	console.log("----------------------------------------------")
 	return older;
 }
 olderFriend(friendsList);
